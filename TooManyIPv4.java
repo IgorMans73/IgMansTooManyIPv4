@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
-import java.util.HashSet;
+//import java.util.HashSet;
 
 public class TooManyIPv4 {
 
@@ -59,8 +59,11 @@ class PlanA{
         }
     }
     public void report(){
+        long k = ipUnic&0x7FFF_FFFF;
+        if (ipUnic<0) k|=0x8000_0000L;
+
         System.out.println("Plan A, The number of unique ip addresses is "
-                + ipUnic
+                + k
         );
     }
     private long strIPv4toInt(char[] strIPv4){
